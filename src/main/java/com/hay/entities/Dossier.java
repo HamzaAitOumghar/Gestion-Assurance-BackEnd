@@ -18,24 +18,28 @@ public class Dossier implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id ;
+	private long idDossier ;
 	private long numero;
 	private String status;
 	private Date dateCreation ;
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="idClient")
 	private Client client;
 	
 	@OneToMany(mappedBy="dossier")
 	private List<Auto> autos;
+	
+	@ManyToOne
+	@JoinColumn(name="username")
+	private Utilisateur utilisateurDossier;
 
 	public long getId() {
-		return id;
+		return idDossier;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.idDossier = id;
 	}
 
 	public long getNumero() {

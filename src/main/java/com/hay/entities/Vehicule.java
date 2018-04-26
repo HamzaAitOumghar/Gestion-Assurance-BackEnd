@@ -13,69 +13,91 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Vehicule implements Serializable{
 
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private long idVehicule;
 	private String matriculation;
 	private String marque;
 	private String puissance;
-	private String usage;
+	private String usageVehicule;
 
+	
+	
 	@ManyToOne
-	@JoinColumn(name="id")
-	private Auto auto;
+	@JoinColumn(name="idAuto")
+	private Auto autoContrat;
 
-	public long getId() {
-		return id;
+
+
+	public long getIdVehicule() {
+		return idVehicule;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+
+
+	public void setIdVehicule(long idVehicule) {
+		this.idVehicule = idVehicule;
 	}
+
+
 
 	public String getMatriculation() {
 		return matriculation;
 	}
 
+
+
 	public void setMatriculation(String matriculation) {
 		this.matriculation = matriculation;
 	}
+
+
 
 	public String getMarque() {
 		return marque;
 	}
 
+
+
 	public void setMarque(String marque) {
 		this.marque = marque;
 	}
+
+
 
 	public String getPuissance() {
 		return puissance;
 	}
 
+
+
 	public void setPuissance(String puissance) {
 		this.puissance = puissance;
 	}
 
-	public String getUsage() {
-		return usage;
+
+
+	public String getUsageVehicule() {
+		return usageVehicule;
 	}
 
-	public void setUsage(String usage) {
-		this.usage = usage;
+
+
+	public void setUsageVehicule(String usageVehicule) {
+		this.usageVehicule = usageVehicule;
 	}
 
-	public Auto getAuto() {
-		return auto;
+
+
+	public Auto getAutoContrat() {
+		return autoContrat;
 	}
 
-	public void setAuto(Auto auto) {
-		this.auto = auto;
+
+
+	public void setAutoContrat(Auto autoContrat) {
+		this.autoContrat = autoContrat;
 	}
-	
-	
-	
 
 
 

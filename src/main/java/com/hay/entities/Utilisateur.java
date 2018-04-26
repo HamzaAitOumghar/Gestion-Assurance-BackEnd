@@ -1,32 +1,32 @@
 package com.hay.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Utilisateur implements Serializable {
 
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id ;
 	private String username;
 	private String password;
-	
-	@ManyToOne
-	@JoinColumn(name="role")
-	private Role role;
 
-	public Utilisateur( String username, String password, Role role) {
+
+	@OneToMany(mappedBy="utilisateurDossier")
+	private List<Dossier> dossiers;
+	
+	public Utilisateur( String username, String password) {
 		this.username = username;
 		this.password = password;
-		this.role = role;
 	}
 
 	public Utilisateur() {
@@ -34,13 +34,6 @@ public class Utilisateur implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
@@ -58,15 +51,7 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
-	public Role getRole() {
-		return role;
-	}
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
-	
-	
 	
 	
 	

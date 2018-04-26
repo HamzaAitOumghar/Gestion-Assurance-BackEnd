@@ -3,8 +3,10 @@ package com.hay.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
@@ -12,10 +14,10 @@ import javax.persistence.OneToMany;
 public class Role implements Serializable{
 	
 	 @Id
-	private String role ;
+	private String roleUtilisateur ;
 	private String description;
 	
-	@OneToMany(mappedBy="")
+	@ManyToMany
 	private List<Utilisateur> utilisateurs ;
 	
 	
@@ -25,14 +27,14 @@ public class Role implements Serializable{
 	}
 	public Role(String role, String description) {
 		super();
-		this.role = role;
+		this.roleUtilisateur = role;
 		this.description = description;
 	}
 	public String getRole() {
-		return role;
+		return roleUtilisateur;
 	}
 	public void setRole(String role) {
-		this.role = role;
+		this.roleUtilisateur = role;
 	}
 	public String getDescription() {
 		return description;
