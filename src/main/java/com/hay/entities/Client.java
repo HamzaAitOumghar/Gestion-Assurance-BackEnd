@@ -8,6 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 @Entity
 public class Client {
 	
@@ -23,6 +27,7 @@ public class Client {
 	private String email;
 
 	@OneToMany(mappedBy="client")
+	@com.fasterxml.jackson.annotation.JsonIgnore
 	private List<Dossier> dossiers;
 
 	public long getIdClient() {

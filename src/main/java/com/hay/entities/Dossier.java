@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
+
 @Entity
 public class Dossier implements Serializable{
 
@@ -24,7 +26,6 @@ public class Dossier implements Serializable{
 	private Date dateCreation ;
 	
 	@ManyToOne
-	@JoinColumn(name="idClient")
 	private Client client;
 	
 	@OneToMany(mappedBy="dossier")
