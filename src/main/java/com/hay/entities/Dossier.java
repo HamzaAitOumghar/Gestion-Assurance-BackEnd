@@ -30,6 +30,10 @@ public class Dossier implements Serializable{
 	
 	@OneToMany(mappedBy="dossier")
 	private List<Auto> autos;
+
+	@OneToMany(mappedBy="dossier")
+	private List<Sante> contratSantes;
+
 	
 	@ManyToOne
 	@JoinColumn(name="username")

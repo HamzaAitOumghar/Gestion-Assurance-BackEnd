@@ -1,5 +1,6 @@
 package com.hay.entities;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -25,10 +26,32 @@ public class Client {
 	private String numTel;
 	private String profession;
 	private String email;
+	private String cin;
+	private Date dateNaissance;
 
 	@OneToMany(mappedBy="client")
 	@com.fasterxml.jackson.annotation.JsonIgnore
 	private List<Dossier> dossiers;
+
+	
+	
+	
+	
+	public String getCin() {
+		return cin;
+	}
+
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
 
 	public long getIdClient() {
 		return idClient;

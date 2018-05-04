@@ -3,11 +3,14 @@ package com.hay.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hay.dao.ClientRepo;
@@ -26,8 +29,9 @@ public class ClientRest {
 	}
 	
 	@RequestMapping(value="/ajouterClient",method=RequestMethod.POST)
-	public Client ajouterClient(Client c) {
-		return this.repo.save(c);
+	public Client saveService(@RequestBody Client service) {
+		System.out.println("--->"+service.getNom());
+		return repo.save(service);
 	}
 	
 	@RequestMapping(value = "clients/{id}", method = RequestMethod.DELETE)
@@ -49,6 +53,8 @@ public class ClientRest {
 		c.setAdresse(cl.getAdresse());
 		c.setEmail(cl.getEmail());
 		c.setNom(cl.getNom());
+		c.setCin(cl.getCin());
+		c.setDateNaissance(cl.getDateNaissance());
 		c.setNumTel(cl.getNumTel());
 		c.setPrenom(cl.getPrenom());
 		c.setProfession(cl.getProfession());

@@ -1,6 +1,7 @@
 package com.hay.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -18,14 +20,52 @@ public class Vehicule implements Serializable{
 	private long idVehicule;
 	private String matriculation;
 	private String marque;
+	private Date datePremierMiseService;
 	private String puissance;
 	private String usageVehicule;
-
+	private int nbrChevaux;
+	private String typeMoteur;
 	
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="idAuto")
 	private Auto autoContrat;
+
+
+
+	public int getNbrChevaux() {
+		return nbrChevaux;
+	}
+
+
+
+	public void setNbrChevaux(int nbrChevaux) {
+		this.nbrChevaux = nbrChevaux;
+	}
+
+
+
+	public String getTypeMoteur() {
+		return typeMoteur;
+	}
+
+
+
+	public void setTypeMoteur(String typeMoteur) {
+		this.typeMoteur = typeMoteur;
+	}
+
+
+
+	public Date getDatePremierMiseService() {
+		return datePremierMiseService;
+	}
+
+
+
+	public void setDatePremierMiseService(Date datePremierMiseService) {
+		this.datePremierMiseService = datePremierMiseService;
+	}
 
 
 

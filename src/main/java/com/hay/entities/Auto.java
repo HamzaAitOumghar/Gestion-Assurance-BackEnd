@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Auto implements Serializable {
@@ -25,8 +26,8 @@ public class Auto implements Serializable {
 	@JoinColumn(name="idDossier")
 	private Dossier dossier ;
 	
-	@OneToMany(mappedBy="autoContrat")
-	private List<Vehicule> vehicules;
+	@OneToOne(mappedBy="autoContrat")
+	private Vehicule vehicules;
 
 	public long getIdAuto() {
 		return idAuto;
@@ -60,17 +61,14 @@ public class Auto implements Serializable {
 		this.dossier = dossier;
 	}
 
-	public List<Vehicule> getVehicules() {
+	public Vehicule getVehicules() {
 		return vehicules;
 	}
 
-	public void setVehicules(List<Vehicule> vehicules) {
+	public void setVehicules(Vehicule vehicules) {
 		this.vehicules = vehicules;
-	} 
-	
-	
-	
-	
+	}
+
 	
 	
 	
