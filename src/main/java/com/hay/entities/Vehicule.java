@@ -21,7 +21,7 @@ public class Vehicule implements Serializable{
 	private String matriculation;
 	private String marque;
 	private Date datePremierMiseService;
-	private String puissance;
+	private int nbrPlace;
 	private String usageVehicule;
 	private int nbrChevaux;
 	private String typeMoteur;
@@ -105,14 +105,18 @@ public class Vehicule implements Serializable{
 
 
 
-	public String getPuissance() {
-		return puissance;
+
+
+
+
+	public int getNbrPlace() {
+		return nbrPlace;
 	}
 
 
 
-	public void setPuissance(String puissance) {
-		this.puissance = puissance;
+	public void setNbrPlace(int nbrPlace) {
+		this.nbrPlace = nbrPlace;
 	}
 
 

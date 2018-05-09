@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +30,14 @@ public class DossierRest {
 	@RequestMapping(value="/dossiers",method=RequestMethod.GET)
 	public List<Dossier> getDossiers(){
 		return repo.findAll();
+	}
+	
+	
+	@RequestMapping(value="/dossiers/ajouter",method=RequestMethod.POST)
+	public Dossier addDossiers(@RequestBody Dossier d){
+		System.out.println(d.getNumero());
+		return repo.save(d);
+	
 	}
 	
 	@RequestMapping(value="/dossiers/detailsClient/{id}",method=RequestMethod.GET)

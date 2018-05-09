@@ -28,9 +28,9 @@ public class ClientRest {
 		return repo.findAll();
 	}
 	
+	
 	@RequestMapping(value="/ajouterClient",method=RequestMethod.POST)
 	public Client saveService(@RequestBody Client service) {
-		System.out.println("--->"+service.getNom());
 		return repo.save(service);
 	}
 	
