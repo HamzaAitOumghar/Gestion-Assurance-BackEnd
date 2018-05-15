@@ -32,13 +32,37 @@ public class DossierRest {
 		return repo.findAll();
 	}
 	
+	@RequestMapping(value="/dossiers/{id}",method=RequestMethod.GET)
+	public Dossier getDossierById(@PathVariable("id") long id) {
+		return (Dossier)repo.findById(id).get();
+	}
 	
-	@RequestMapping(value="/dossiers/ajouter",method=RequestMethod.POST)
-	public Dossier addDossiers(@RequestBody Dossier d){
-		System.out.println(d.getNumero());
+	
+	@RequestMapping(value="/dossiers/ajouter/{id}",method=RequestMethod.POST)
+	public Dossier addDossiers(@RequestBody Dossier d,@PathVariable("id") long idClient){
+		Client cl = (Client)repoClient.findById(idClient).get();
+		d.setClient(cl);
 		return repo.save(d);
 	
 	}
+	
+	@RequestMapping(value="/dossiers/modifier/{id}",method=RequestMethod.PUT)
+	public Dossier modifierDossiers(@RequestBody Dossier d,@PathVariable("id") long idClient){
+		Client cl = (Client)repoClient.findById(idClient).get();
+		System.out.println("Test"+cl.toString());
+		Dossier newDossier=(Dossier)repo.findById(d.getId()).get();
+
+		newDossier.setDateCreation(d.getDateCreation());
+
+		newDossier.setNumero(d.getNumero());
+		newDossier.setStatus(d.getStatus());
+		
+		newDossier.setClient(cl);
+		
+		return repo.save(newDossier);
+	
+	}
+	
 	
 	@RequestMapping(value="/dossiers/detailsClient/{id}",method=RequestMethod.GET)
 	public Object getClientDetails(@PathVariable  long id){

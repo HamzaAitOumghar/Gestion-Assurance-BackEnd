@@ -35,9 +35,9 @@ public class ClientRest {
 	}
 	
 	@RequestMapping(value = "clients/{id}", method = RequestMethod.DELETE)
-	public String deleteClient(@PathVariable("id") long clientId) {
-		this.repo.deleteById(clientId);
-	    return "redirect:/client";
+	public long deleteClient(@PathVariable("id") long clientId) {
+		 this.repo.deleteById(clientId);
+		 return clientId;
 	}
 	
 	@RequestMapping(value = "clients/{id}", method = RequestMethod.GET)

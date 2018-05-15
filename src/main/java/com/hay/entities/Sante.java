@@ -25,6 +25,12 @@ public class Sante implements Serializable {
 	private Dossier dossier;
 	
 	
+	public Dossier getDossier() {
+		return dossier;
+	}
+	public void setDossier(Dossier dossier) {
+		this.dossier = dossier;
+	}
 	public long getNumContratSante() {
 		return numContratSante;
 	}
