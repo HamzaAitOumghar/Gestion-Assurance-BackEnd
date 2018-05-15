@@ -1,5 +1,7 @@
 package com.hay.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +37,11 @@ public class SanteRest {
 		service.setDossier(dossier);
 		
 		return  repoSante.save(service);
+	}
+	
+	@RequestMapping(value="/Sante",method=RequestMethod.GET)
+	public List<Sante> getAllContratSante(){
+			return this.repoSante.findAll();
 	}
 	
 	
