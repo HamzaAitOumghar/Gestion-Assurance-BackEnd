@@ -29,13 +29,8 @@ public class SanteRest {
 	
 	@RequestMapping(value="/Sante/ajouter/{idDossier}",method=RequestMethod.POST)
 	public Sante saveSante(@RequestBody Sante service,@PathVariable("idDossier") long idDossier) {
-		
-		System.out.println("Test ! ! "+idDossier);
 		Dossier dossier = (Dossier ) repoDossier.findById(idDossier).get();
-		System.out.println("Test ! ! "+dossier.getStatus());
-
 		service.setDossier(dossier);
-		
 		return  repoSante.save(service);
 	}
 	
@@ -44,6 +39,20 @@ public class SanteRest {
 			return this.repoSante.findAll();
 	}
 	
+	@RequestMapping(value="/Sante/modifier/{id}",method=RequestMethod.PUT)
+	public Sante modifierSante(@PathVariable("id") long idSante,@RequestBody Sante newSante) {
+		Sante oldSante=(Sante)this.repoSante.findById(idSante).get();
+		oldSante.setDateContrat(newSante.getDateContrat());
+		oldSante.setMontant(newSante.getMontant());
+		oldSante.setStatus(newSante.getStatus());
+		return this.repoSante.save(oldSante);	
+	}
+	
+	@RequestMapping(value="/Sante/delete/{id}",method=RequestMethod.DELETE)
+	public Long deleteSante(@PathVariable("id") long idSante) {
+		this.repoSante.deleteById(idSante);
+		return idSante;
+	}
 	
 	
 	
