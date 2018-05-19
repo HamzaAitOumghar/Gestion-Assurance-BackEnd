@@ -33,10 +33,19 @@ public class AutoRest {
 		service.setDossier(dossier);
 		return repoAuto.save(service);
 	}
+	
 	@RequestMapping(value="/auto",method=RequestMethod.GET)
-	public List<Auto> getClient(){
+	public List<Auto> getAllContratAuto(){
 		return repoAuto.findAll();
 	}
+	
+
+	@RequestMapping(value="/auto/{id}",method=RequestMethod.GET)
+	public List<Auto> getAllContratAutoInDossier(@PathVariable("id") long idDossier){
+		return repoAuto.getContratAutoInDossier(idDossier);
+	}
+
+	
 	@RequestMapping(value = "/auto/modifier/{id}", method = RequestMethod.PUT)
 	public Auto editAuto(@PathVariable("id") long autoId, @RequestBody Auto au) {
 		Auto newAuto=(Auto)repoAuto.findById(autoId).get();

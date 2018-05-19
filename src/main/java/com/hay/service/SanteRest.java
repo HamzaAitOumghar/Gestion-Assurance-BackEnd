@@ -39,6 +39,12 @@ public class SanteRest {
 			return this.repoSante.findAll();
 	}
 	
+	@RequestMapping(value="/Sante/{id}",method=RequestMethod.GET)
+	public List<Sante> getAllContratSanteInDossier(@PathVariable("id") long idDossier){
+			return this.repoSante.getContratSanteInDossier(idDossier);
+	}
+	
+	
 	@RequestMapping(value="/Sante/modifier/{id}",method=RequestMethod.PUT)
 	public Sante modifierSante(@PathVariable("id") long idSante,@RequestBody Sante newSante) {
 		Sante oldSante=(Sante)this.repoSante.findById(idSante).get();
