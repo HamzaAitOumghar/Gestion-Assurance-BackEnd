@@ -51,6 +51,8 @@ public class AutoRest {
 		Auto newAuto=(Auto)repoAuto.findById(autoId).get();
 		newAuto.setDateEchange(au.getDateEchange());
 		newAuto.setDateEffetPolice(au.getDateEffetPolice());
+		newAuto.setMontant(au.getMontant());
+		newAuto.setTypeContrats(au.getTypeContrats());
 		return repoAuto.save(newAuto);
 	}
 	

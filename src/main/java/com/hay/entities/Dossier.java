@@ -33,6 +33,9 @@ public class Dossier implements Serializable{
 
 	@OneToMany(mappedBy="dossier")
 	private List<Sante> contratSantes;
+	
+	@OneToMany(mappedBy="dossier")
+	private List<Habitation> contratHabitation;
 
 	
 	@ManyToOne
