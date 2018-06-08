@@ -1,5 +1,8 @@
 package com.hay.entities;
 
+import static org.hamcrest.CoreMatchers.any;
+import static org.mockito.Mockito.RETURNS_SELF;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -7,9 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -30,13 +36,25 @@ public class Client {
 	private Date dateNaissance;
 
 	@OneToMany(mappedBy="client")
-	@com.fasterxml.jackson.annotation.JsonIgnore
+	@JsonIgnore
 	private List<Dossier> dossiers;
 
+	@ManyToOne
+	@JoinColumn(name="idStatusClient")
+	private StatusClient status;
 	
 	
 	
 	
+	
+	public StatusClient getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusClient status) {
+		this.status = status;
+	}
+
 	public String getCin() {
 		return cin;
 	}

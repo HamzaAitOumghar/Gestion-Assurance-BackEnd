@@ -31,6 +31,7 @@ public class ClientRest {
 	
 	@RequestMapping(value="/ajouterClient",method=RequestMethod.POST)
 	public Client saveService(@RequestBody Client service) {
+		System.out.println(service.getStatus().getLabelStatus());
 		return repo.save(service);
 	}
 	

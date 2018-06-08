@@ -36,7 +36,7 @@ public class VehiculeRest {
 	Vehicule modifierVehicule(@PathVariable("id") long idVehicule,@RequestBody Vehicule vehicule) {
 		Vehicule newVehicule = (Vehicule)repoVehicule.findById(idVehicule).get();
 		newVehicule.setDatePremierMiseService(vehicule.getDatePremierMiseService());
-		newVehicule.setMarque(vehicule.getMarque());
+		newVehicule.setMarqueVehicule(vehicule.getMarqueVehicule());
 		newVehicule.setMatriculation(vehicule.getMatriculation());
 		newVehicule.setNbrChevaux(vehicule.getNbrChevaux());
 		newVehicule.setNbrPlace(vehicule.getNbrPlace());

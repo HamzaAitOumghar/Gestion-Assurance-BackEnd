@@ -44,8 +44,28 @@ public class HabitationRest {
 		return repo.getContratHabitationInDossier(idDossier);
 	}
 	
-
 	
+	@RequestMapping(value="/habitation/delete/{idHabitaion}",method=RequestMethod.DELETE)
+	public Long deleteContatHabitation(@PathVariable("idHabitaion") long idHabitaion) {
+				repo.deleteById(idHabitaion);
+				return idHabitaion;
+	}
+	
+	@RequestMapping(value = "/habitation/modifier/{id}", method = RequestMethod.PUT)
+	public Habitation editHabitation(@PathVariable("id") long habitationId, @RequestBody Habitation habitation) {
+		
+		Habitation newHabit =(Habitation) repo.findById(habitationId).get();
+		
+		newHabit.setAdresseHabitation(habitation.getAdresseHabitation());
+		newHabit.setDateDebut(habitation.getDateDebut());
+		newHabit.setDateFin(habitation.getDateFin());
+		newHabit.setMontant(habitation.getMontant());
+		newHabit.setVille(habitation.getVille());
+		newHabit.setNbrPiece(habitation.getNbrPiece());
+		newHabit.setTypeLogement(habitation.getTypeLogement());
+		
+		return repo.save(newHabit);
+	}
 	
 	
 	

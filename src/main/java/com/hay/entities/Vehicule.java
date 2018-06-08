@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,7 +22,6 @@ public class Vehicule implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idVehicule;
 	private String matriculation;
-	private String marque;
 	private Date datePremierMiseService;
 	private int nbrPlace;
 	private String usageVehicule;
@@ -33,6 +33,23 @@ public class Vehicule implements Serializable{
 	@JoinColumn(name="idAuto")
 	@JsonIgnore
 	private Auto autoContrat;
+
+	
+	@ManyToOne
+	@JoinColumn(name="idMarqueVehicule")
+	private MarqueVehicule marqueVehicule;
+	
+	
+
+	public MarqueVehicule getMarqueVehicule() {
+		return marqueVehicule;
+	}
+
+
+
+	public void setMarqueVehicule(MarqueVehicule marqueVehicule) {
+		this.marqueVehicule = marqueVehicule;
+	}
 
 
 
@@ -93,21 +110,6 @@ public class Vehicule implements Serializable{
 	public void setMatriculation(String matriculation) {
 		this.matriculation = matriculation;
 	}
-
-
-
-	public String getMarque() {
-		return marque;
-	}
-
-
-
-	public void setMarque(String marque) {
-		this.marque = marque;
-	}
-
-
-
 
 
 
