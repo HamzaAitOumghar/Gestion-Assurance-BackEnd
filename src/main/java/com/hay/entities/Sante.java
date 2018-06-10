@@ -2,11 +2,16 @@ package com.hay.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,11 +23,15 @@ public class Sante implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long numContratSante;
 	private Date dateContrat;
-	private String status ;
+	private Date dateFinContrat ;
 	private double montant;
 	
 	@ManyToOne
 	private Dossier dossier;
+	
+	@ManyToMany
+	@JoinTable(name="TypesSante",joinColumns=@JoinColumn(name="numContratSante"),inverseJoinColumns=@JoinColumn(name="idTypeContratSante"))
+	List<TypeContratSante> typeContrats=new ArrayList<>();
 	
 	
 	public Dossier getDossier() {
@@ -43,11 +52,19 @@ public class Sante implements Serializable {
 	public void setDateContrat(Date dateContrat) {
 		this.dateContrat = dateContrat;
 	}
-	public String getStatus() {
-		return status;
+	
+	
+	public Date getDateFinContrat() {
+		return dateFinContrat;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setDateFinContrat(Date dateFinContrat) {
+		this.dateFinContrat = dateFinContrat;
+	}
+	public List<TypeContratSante> getTypeContrats() {
+		return typeContrats;
+	}
+	public void setTypeContrats(List<TypeContratSante> typeContrats) {
+		this.typeContrats = typeContrats;
 	}
 	public double getMontant() {
 		return montant;

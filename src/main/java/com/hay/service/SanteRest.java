@@ -50,7 +50,7 @@ public class SanteRest {
 		Sante oldSante=(Sante)this.repoSante.findById(idSante).get();
 		oldSante.setDateContrat(newSante.getDateContrat());
 		oldSante.setMontant(newSante.getMontant());
-		oldSante.setStatus(newSante.getStatus());
+		oldSante.setDateFinContrat(newSante.getDateFinContrat());
 		return this.repoSante.save(oldSante);	
 	}
 	

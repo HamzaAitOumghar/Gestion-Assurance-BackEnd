@@ -18,4 +18,9 @@ public interface ClientRepo extends JpaRepository<Client, Long> {
 
 	@Query(value="select c.idClient  , c.nom +' '+c.prenom as nomComplet from Client c ")
 	List<Object> getIdClient();
+	
+	@Query(value="select c.status.labelStatus as status  , count(c. idClient) as nombre  from Client as c  group by  c.status.labelStatus  ")
+	 Object[] getStatusClient();
+	
+	
 }

@@ -1,12 +1,16 @@
 package com.hay.entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -28,6 +32,11 @@ public class Habitation {
 	@JoinColumn(name="idDossier")
 	private Dossier dossier ;
 
+	@ManyToMany
+	@JoinTable(name="TypesHabitation",joinColumns=@JoinColumn(name="idContratHabitation"),inverseJoinColumns=@JoinColumn(name="idTypeContratHabitation"))
+	List<TypeContratHabitation> typeContrats=new ArrayList<>();
+	
+	
 
 	public long getIdContratHabitation() {
 		return idContratHabitation;
