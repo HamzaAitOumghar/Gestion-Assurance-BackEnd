@@ -38,6 +38,16 @@ public class Habitation {
 	
 	
 
+	public List<TypeContratHabitation> getTypeContrats() {
+		return typeContrats;
+	}
+
+
+	public void setTypeContrats(List<TypeContratHabitation> typeContrats) {
+		this.typeContrats = typeContrats;
+	}
+
+
 	public long getIdContratHabitation() {
 		return idContratHabitation;
 	}

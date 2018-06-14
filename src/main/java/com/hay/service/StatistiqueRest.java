@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +42,21 @@ public class StatistiqueRest {
 		states[1]=this.repoAuto.count();
 		states[2]=this.repoHabitation.count();
 		states[3]=this.repoSante.count();
-		
 		return states;
 	}
+	
+	@RequestMapping(value="/statistique/evolutionContratAuto",method=RequestMethod.GET)
+	public Object[] contratAutoEvolutions() {
+		return repoAuto.statContrat();
+	}
+	@RequestMapping(value="/statistique/evolutionContratHabitation",method=RequestMethod.GET)
+	public Object[] contratHabitationEvolutions() {
+		return repoHabitation.getStatHabitation();
+	}
+	@RequestMapping(value="/statistique/evolutionContratSante",method=RequestMethod.GET)
+	public Object[] contratSanteEvolutions() {
+		return repoSante.getStatSante();
+	}
+	
+	
 }

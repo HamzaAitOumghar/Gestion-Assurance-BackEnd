@@ -1,9 +1,12 @@
 package com.hay.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,23 +20,26 @@ public class Utilisateur implements Serializable {
 
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long idUser;
+	@Column(unique=true)
 	private String username;
 	private String password;
 
 
 	@OneToMany(mappedBy="utilisateurDossier")
 	private List<Dossier> dossiers;
-	
-	public Utilisateur( String username, String password) {
-		this.username = username;
-		this.password = password;
+
+	 @ManyToMany(fetch=FetchType.EAGER)
+	 private List<Role> roles=new ArrayList<>();
+
+	public Long getIdUser() {
+		return idUser;
 	}
 
-	public Utilisateur() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
 	}
-
 
 	public String getUsername() {
 		return username;
@@ -51,6 +57,23 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
+	public List<Dossier> getDossiers() {
+		return dossiers;
+	}
+
+	public void setDossiers(List<Dossier> dossiers) {
+		this.dossiers = dossiers;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	 
 
 	
 	

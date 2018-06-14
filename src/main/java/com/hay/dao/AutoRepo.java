@@ -14,5 +14,11 @@ public interface AutoRepo extends JpaRepository<Auto, Long> {
 	@Query("select s from Auto s  where s.dossier.idDossier = :idDossier")
 	List<Auto> getContratAutoInDossier(@Param("idDossier") long idDossier);
 	
+	@Query("select  year(s.dateEffetPolice), month(s.dateEffetPolice ),count(s. idAuto)   from Auto s   group by  year(s.dateEffetPolice),month(s.dateEffetPolice ) order by  year(s.dateEffetPolice),month(s.dateEffetPolice )  ")
+	Object[]  statContrat();
+	/*
+	 * 
+	 where  year(s.dateEffetPolice)=2018
+	 */
 
 }

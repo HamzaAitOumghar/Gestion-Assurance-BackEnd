@@ -13,4 +13,7 @@ public interface HabitationRepo extends JpaRepository<Habitation, Long> {
 	@Query("select s from Habitation s  where s.dossier.idDossier = :idDossier")
 	List<Habitation> getContratHabitationInDossier(@Param("idDossier") long idDossier);
 
+	@Query("select  year(s.dateDebut), month(s.dateDebut ),count(s.idContratHabitation)   from Habitation s   group by  year(s.dateDebut), month(s.dateDebut) order by   year(s.dateDebut), month(s.dateDebut)   ")
+	Object[]  getStatHabitation();
+	
 }

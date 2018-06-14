@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -14,35 +16,27 @@ import javax.persistence.OneToMany;
 public class Role implements Serializable{
 	
 	 @Id
-	private String roleUtilisateur ;
-	private String description;
-	
-	@ManyToMany
-	private List<Utilisateur> utilisateurs ;
+	 @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id ;
+	private String role;
 	
 	
-	public Role() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	public Long getId() {
+		return id;
 	}
-	public Role(String role, String description) {
-		super();
-		this.roleUtilisateur = role;
-		this.description = description;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getRole() {
-		return roleUtilisateur;
+		return role;
 	}
 	public void setRole(String role) {
-		this.roleUtilisateur = role;
+		this.role = role;
 	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
+	
+	
+	
 	
 	
 }
