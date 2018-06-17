@@ -1,6 +1,7 @@
 package com.hay;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -33,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.authorizeRequests().antMatchers("/login/**").permitAll();
+		http.authorizeRequests().antMatchers("/login").permitAll();
 		http.authorizeRequests().anyRequest().authenticated();
 		http.addFilter(new JWTAuthentificationFilter(authenticationManager()));
 		http.addFilterBefore(new JWRAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);

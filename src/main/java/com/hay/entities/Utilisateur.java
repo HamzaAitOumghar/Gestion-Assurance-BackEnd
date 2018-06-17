@@ -27,8 +27,8 @@ public class Utilisateur implements Serializable {
 	private String password;
 
 
-	@OneToMany(mappedBy="utilisateurDossier")
-	private List<Dossier> dossiers;
+	@ManyToOne
+	private Client client;
 
 	 @ManyToMany(fetch=FetchType.EAGER)
 	 private List<Role> roles=new ArrayList<>();
@@ -57,12 +57,13 @@ public class Utilisateur implements Serializable {
 		this.password = password;
 	}
 
-	public List<Dossier> getDossiers() {
-		return dossiers;
+
+	public Client getClient() {
+		return client;
 	}
 
-	public void setDossiers(List<Dossier> dossiers) {
-		this.dossiers = dossiers;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public List<Role> getRoles() {

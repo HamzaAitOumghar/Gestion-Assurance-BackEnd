@@ -16,4 +16,7 @@ public interface SanteRepo extends JpaRepository<Sante, Long> {
 	@Query("select  year(s.dateContrat), month(s.dateContrat ),count(s.numContratSante)   from Sante s   group by  year(s.dateContrat), month(s.dateContrat ) order by   year(s.dateContrat), month(s.dateContrat )  ")
 	Object[]  getStatSante();
 
+	@Query("select  year(s.dateContrat), month(s.dateContrat ),sum(s.montant)   from Sante s   group by  year(s.dateContrat), month(s.dateContrat ) order by   year(s.dateContrat), month(s.dateContrat )  ")
+	Object[]  getBudgetSante();
+
 }

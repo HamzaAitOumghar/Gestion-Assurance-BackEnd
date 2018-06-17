@@ -28,6 +28,9 @@ public class JWRAuthorizationFilter extends OncePerRequestFilter{
 		response.addHeader("Access-Control-Allow-Origin","*");
 		response.addHeader("Access-Control-Allow-Headers","Origin, Accept, X-Requested-With, Content-Type, Access-Contol-Request-Method, Access-Control-Request-Headers,Authorization");
 		response.addHeader("Access-Control-Expose-Headers", "Access-Control-Allow-Origin,Access-Control-Allow-Credentials,Authorization");
+		 response.setHeader("Access-Control-Allow-Methods",
+	                "ACL, CANCELUPLOAD, CHECKIN, CHECKOUT, COPY, DELETE, GET, HEAD, LOCK, MKCALENDAR, MKCOL, MOVE, OPTIONS, POST, PROPFIND, PROPPATCH, PUT, REPORT, SEARCH, UNCHECKOUT, UNLOCK, UPDATE, VERSION-CONTROL");
+		
 		String jwt=request.getHeader(SecurityConstants.TOKEN_STRING);
 
 		

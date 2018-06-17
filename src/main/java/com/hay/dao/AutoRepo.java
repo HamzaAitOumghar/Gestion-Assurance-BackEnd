@@ -16,9 +16,10 @@ public interface AutoRepo extends JpaRepository<Auto, Long> {
 	
 	@Query("select  year(s.dateEffetPolice), month(s.dateEffetPolice ),count(s. idAuto)   from Auto s   group by  year(s.dateEffetPolice),month(s.dateEffetPolice ) order by  year(s.dateEffetPolice),month(s.dateEffetPolice )  ")
 	Object[]  statContrat();
-	/*
-	 * 
-	 where  year(s.dateEffetPolice)=2018
-	 */
+
+	@Query("select  year(s.dateEffetPolice), month(s.dateEffetPolice ),sum(s.montant)   from Auto s   group by  year(s.dateEffetPolice),month(s.dateEffetPolice ) order by  year(s.dateEffetPolice),month(s.dateEffetPolice )  ")
+	Object[]  statMontantContrat();
+
+	
 
 }

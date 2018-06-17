@@ -57,6 +57,17 @@ public class StatistiqueRest {
 	public Object[] contratSanteEvolutions() {
 		return repoSante.getStatSante();
 	}
-	
+	@RequestMapping(value="/statistique/budjetContratAuto",method=RequestMethod.GET)
+	public Object[] contratAutoBudjet() {
+		return repoAuto.statMontantContrat();
+	}
+	@RequestMapping(value="/statistique/budjetContratHabitation",method=RequestMethod.GET)
+	public Object[] contratHabitationBudjet() {
+		return repoHabitation.getBudgetHabitation();
+	}
+	@RequestMapping(value="/statistique/budjetContratSante",method=RequestMethod.GET)
+	public Object[] contratSanteBudjet() {
+		return repoSante.getBudgetSante();
+	}
 	
 }
