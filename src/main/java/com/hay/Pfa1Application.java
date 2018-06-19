@@ -24,6 +24,10 @@ public class Pfa1Application  implements CommandLineRunner{
 
 	@Autowired
 	private AutoRepo repo;
+	
+	@Autowired
+	private RoleRepo repoRole;
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pfa1Application.class, args);
@@ -37,16 +41,16 @@ public class Pfa1Application  implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 	
-		System.out.println(this.repo.statMontantContrat());
-		/*	
-	Utilisateur user=new Utilisateur();
-    user.setUsername("HAMZA2");
-    user.setPassword("HAMZA");
+		//System.out.println(this.repo.statMontantContrat());
+			
+	/*Utilisateur user=new Utilisateur();
+    user.setUsername("Ayoub");
+    user.setPassword("ayoub");
     List<Role> roles=new ArrayList<>();
-    roles.add(this.repo.findByRole("CLIENT"));
+    roles.add(this.repoRole.findByRole("CLIENT"));
     user.setRoles(roles);    
-	this.service.saveUser(user); */
-	
+	this.service.saveUser(user); 
+	/*
 //		this.service.addRoleToUser(user.getUsername(),"CLIENT");
 //	Utilisateur user =this.service.findUserbyUsername("Hamza");
 //	Role role= new Role();
@@ -56,6 +60,7 @@ public class Pfa1Application  implements CommandLineRunner{
 ////		user.setUsername("Hamza");
 ////		user.setPassword("hamza");
 ////		this.service.saveUser(user);
-	}
+	} */
 	
+}
 }
